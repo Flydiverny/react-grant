@@ -2,7 +2,7 @@ import React from 'react';
 
 const AccessContex = React.createContext({
   canDo: () => false,
-  defined: () => true
+  defined: () => true,
 });
 
 export default AccessContex;

@@ -5,6 +5,7 @@ import { Grant } from '../';
 
 const A = () => 'A';
 const AWithCanDo = test.canDo('show:a')(A);
+const AWithMultiCanDo = test.canDo('show:a show:b')(A);
 
 describe("canDo", () => {
   it('does not render child if access not available', () => {
@@ -26,5 +27,25 @@ describe("canDo", () => {
     );
 
     expect(wrapper.find(A).exists()).toEqual(true);
+  });
+
+  it('renders child if access available when needing multiple access', () => {
+    const wrapper = mount(
+      <Grant accessTo="show:a show:b">
+        <AWithMultiCanDo />
+      </Grant>
+    );
+
+    expect(wrapper.find(A).exists()).toEqual(true);
+  });
+
+  it('does not renders child if access not available when needing multiple access', () => {
+    const wrapper = mount(
+      <Grant accessTo="show:a show:c">
+        <AWithMultiCanDo />
+      </Grant>
+    );
+
+    expect(wrapper.find(A).exists()).toEqual(false);
   });
 });

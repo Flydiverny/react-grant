@@ -6,21 +6,20 @@ import actionsShape from './utils/actionsShape';
 
 const extendCanDo = (canDo, isDefined, grantedAccess) => {
   // Verify that all things granted exist
-  normalizeToArray(grantedAccess).every(isDefined);
+  isDefined(grantedAccess);
   const verifier = verifyAccess(grantedAccess);
 
-  return (actions) => normalizeToArray(actions)
-    .every((action) => verifier(action) || canDo(action));
-}
+  return actions => normalizeToArray(actions).every(action => verifier(action) || canDo(action));
+};
 
 const Grant = ({ children, accessTo }) => (
   <AccessContex.Consumer>
-    {({canDo, defined, ...rest}) => (
+    {({ canDo, defined, ...rest }) => (
       <AccessContex.Provider
         value={{
           ...rest,
           defined,
-          canDo: extendCanDo(canDo, defined, accessTo)
+          canDo: extendCanDo(canDo, defined, accessTo),
         }}
       >
         {children}

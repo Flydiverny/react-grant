@@ -4,7 +4,7 @@ import AccessContex from './AccessContex';
 
 const Can = ({ do: actions, children }) => (
   <AccessContex.Consumer>
-    {({ canDo }) => canDo(actions) ? children : null}
+    {({ canDo, defined }) => (defined(actions) && canDo(actions) ? children : null)}
   </AccessContex.Consumer>
 );
 
