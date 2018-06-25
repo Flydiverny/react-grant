@@ -10,31 +10,16 @@ npm install react-grant
 
 ### Usage
 
-Wrap your entire application in the `AccessProvider` to grant global access
-and optionally define which actions are available.
-
-```js
-import { AccessProvider } from 'react-grant';
-
-// Both string and array based input works for both acitons & defined
-const actions = "show:a show:b article:edit article:delete";
-const defined = ["show:a", "show:b", "article:edit", "article:delete"];
-
-<AccessProvider grant={actions} defined={defined}>
-  {...}
-</AccessProvider>
-```
-
 Grant access to specific tress by using the `Grant`.
 
 ```js
 import { Grant } from 'react-grant';
 
 <div>
-  <Grant actions="show:a article:edit">
+  <Grant accessTo="show:a article:edit">
     <Article ... />
   </Grant>
-  <Grant actions="show:a article:edit article:delete">
+  <Grant accessTo="show:a article:edit article:delete">
     <Article ... />
   </Grant>
 </div>
@@ -78,4 +63,20 @@ const EditLink = ({ canDo }) => {
 };
 
 export default withCan(EditLink);
+```
+
+
+## Programmer error protection
+Wrap your entire application in the `GrantDefinitions` to define which actions are available.
+If a Grant is trying to grant access to
+
+```js
+import { GrantDefinitions } from 'react-grant';
+
+// Both string and array based input works for both acitons & defined
+const defined = ["show:a", "show:b", "article:edit", "article:delete"];
+
+<GrantDefinitions defined={defined}>
+  {...}
+</GrantDefinitions>
 ```
