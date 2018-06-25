@@ -1,8 +1,8 @@
 import React from 'react';
 
-const AccessContex = React.createContext({
+const GrantContext = React.createContext({
   canDo: () => false,
   defined: () => true,
 });
 
-export default AccessContex;
+export default GrantContext;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AccessContex from './AccessContex';
+import GrantContext from './GrantContext';
 import verifyAccess, { normalizeToArray } from './utils/verifyAccess';
 import actionsShape from './utils/actionsShape';
 
@@ -13,9 +13,9 @@ const extendCanDo = (canDo, isDefined, grantedAccess) => {
 };
 
 const Grant = ({ children, accessTo }) => (
-  <AccessContex.Consumer>
+  <GrantContext.Consumer>
     {({ canDo, defined, ...rest }) => (
-      <AccessContex.Provider
+      <GrantContext.Provider
         value={{
           ...rest,
           defined,
@@ -23,9 +23,9 @@ const Grant = ({ children, accessTo }) => (
         }}
       >
         {children}
-      </AccessContex.Provider>
+      </GrantContext.Provider>
     )}
-  </AccessContex.Consumer>
+  </GrantContext.Consumer>
 );
 
 Grant.propTypes = {

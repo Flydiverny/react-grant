@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AccessContex from './AccessContex';
+import GrantContext from './GrantContext';
 
 const Can = ({ do: actions, children }) => (
-  <AccessContex.Consumer>
+  <GrantContext.Consumer>
     {({ canDo, defined }) => (defined(actions) && canDo(actions) ? children : null)}
-  </AccessContex.Consumer>
+  </GrantContext.Consumer>
 );
 
 Can.propTypes = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AccessContex from './AccessContex';
+import GrantContext from './GrantContext';
 import verifyAccess, { normalizeToArray } from './utils/verifyAccess';
 import actionsShape from './utils/actionsShape';
 
@@ -22,9 +22,9 @@ const verifyDefined = defined => {
 };
 
 const GrantDefinitions = ({ children, defined }) => (
-  <AccessContex.Provider value={{ defined: verifyDefined(defined) }}>
+  <GrantContext.Provider value={{ defined: verifyDefined(defined) }}>
     {children}
-  </AccessContex.Provider>
+  </GrantContext.Provider>
 );
 
 GrantDefinitions.propTypes = {

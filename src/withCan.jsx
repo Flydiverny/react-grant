@@ -1,11 +1,11 @@
 import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import AccessContex from './AccessContex';
+import GrantContext from './GrantContext';
 
 const withCan = WrappedComponent => {
   // eslint-disable-next-line react/prop-types
   const WithCan = ({ forwardedRef, ...props }) => (
-    <AccessContex.Consumer>
+    <GrantContext.Consumer>
       {({ canDo, defined }) => (
         <WrappedComponent
           ref={forwardedRef}
@@ -13,7 +13,7 @@ const withCan = WrappedComponent => {
           {...props}
         />
       )}
-    </AccessContex.Consumer>
+    </GrantContext.Consumer>
   );
 
   return WithCan;
