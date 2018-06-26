@@ -46,26 +46,24 @@ const Article = ({}) => (
     </Can>
   </div>
 );
-
-export default Article;
 ```
 
 ## HoCs
 
 ### Can
 ```js
-import { withPolicy } from 'react-grant';
+import { canDo } from 'react-grant';
 
 const EditLink = ({}) => (
   <Link>Edit</Link>
 );
 
-export default can('edit:article', EditLink);
+export default canDo('edit:article', EditLink);
 ```
 
 ### Inject canDo
 ```js
-import { withPolicy } from 'react-grant';
+import { withCan } from 'react-grant';
 
 const EditLink = ({ canDo }) => {
   return (
