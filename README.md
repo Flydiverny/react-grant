@@ -5,7 +5,13 @@ Library for conditional rendering based on access
 ### Installation
 
 ```
-npm install react-grant
+npm i react-grant
+```
+
+or
+
+```
+yarn add react-grant
 ```
 
 ## Usage

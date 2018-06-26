@@ -1,6 +1,6 @@
 {
   "name": "react-grant",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "Grant Based Access Control",
   "author": "Markus Maga <markus@nadilus.com>",
   "main": "dist/react-grant",
@@ -34,11 +34,11 @@
     "jest": "^23.1.0",
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1",
-    "webpack": "^4.3.0",
-    "webpack-cli": "^2.0.13",
     "prop-types": "^15.6.1",
     "react": "^16.3.0",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.13"
   },
   "peerDependencies": {
     "prop-types": "^15.6",
