@@ -1,6 +1,6 @@
 {
   "name": "react-grant",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Grant Based Access Control",
   "author": "Markus Maga <markus@nadilus.com>",
   "main": "dist/react-grant.js",
