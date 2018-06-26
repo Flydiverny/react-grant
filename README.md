@@ -8,8 +8,9 @@ Library for conditional rendering based on access
 npm install react-grant
 ```
 
-### Usage
+## Usage
 
+### Grant
 Grant access to specific tress by using the `Grant`.
 
 ```js
@@ -25,6 +26,8 @@ import { Grant } from 'react-grant';
 </div>
 ```
 
+### Can
+Check access with `Can?
 
 ```js
 import { Can } from 'react-grant';
@@ -41,7 +44,9 @@ const Article = ({}) => (
 export default Article;
 ```
 
-### HoCs
+## HoCs
+
+### Can
 ```js
 import { withPolicy } from 'react-grant';
 
