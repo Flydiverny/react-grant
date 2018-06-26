@@ -5,7 +5,7 @@ import { Grant, Can } from '../';
 
 const A = () => 'A';
 
-describe("<Can />", () => {
+describe('<Can />', () => {
   it('does not render child if access not available', () => {
     const wrapper = mount(
       <Grant accessTo="show:a">
@@ -48,6 +48,26 @@ describe("<Can />", () => {
         <Can do="show:a show:c">
           <A />
         </Can>
+      </Grant>
+    );
+
+    expect(wrapper.find(A).exists()).toEqual(false);
+  });
+
+  it('renders child if access available when needing multiple access using child function', () => {
+    const wrapper = mount(
+      <Grant accessTo="show:a show:b">
+        <Can do="show:a show:b">{can => can && <A />}</Can>
+      </Grant>
+    );
+
+    expect(wrapper.find(A).exists()).toEqual(true);
+  });
+
+  it('does not renders child if access not available when needing multiple access using child function', () => {
+    const wrapper = mount(
+      <Grant accessTo="show:a show:b">
+        <Can do="show:a show:c">{can => can && <A />}</Can>
       </Grant>
     );
 

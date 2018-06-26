@@ -48,6 +48,21 @@ const Article = ({}) => (
 );
 ```
 
+Or do conditional rendering with child function
+
+```js
+import { Can } from 'react-grant';
+
+const Article = ({}) => (
+  <div>
+    <span>Hello</span>
+    <Can do="article:edit">
+      { can => can ? <Link>Edit</Link> : <span>Cant edit</span> }
+    </Can>
+  </div>
+);
+```
+
 ## HoCs
 
 ### Can

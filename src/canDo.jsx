@@ -6,7 +6,7 @@ const canDo = actions => WrappedComponent => {
   // eslint-disable-next-line react/prop-types
   const CanDo = ({ forwardedRef, ...props }) => (
     <Can do={actions}>
-      <WrappedComponent ref={forwardedRef} {...props} />
+      {can => can && <WrappedComponent ref={forwardedRef} {...props} />}
     </Can>
   );
 
