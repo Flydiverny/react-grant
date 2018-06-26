@@ -7,10 +7,16 @@
   "scripts": {
     "build": "webpack --mode production",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest --silent",
+    "prepublish": "yarn run clean && yarn run lint && yarn run test && yarn run build",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "license": "MIT",
+  "dependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "npm:enzyme-react-adapter-future"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
@@ -19,8 +25,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "npm:enzyme-react-adapter-future",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
