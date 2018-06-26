@@ -17,7 +17,7 @@ yarn add react-grant
 ## Usage
 
 ### Grant
-Grant access to specific tress by using the `Grant`.
+Grant access to specific trees by using the `Grant`.
 
 ```js
 import { Grant } from 'react-grant';
