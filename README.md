@@ -1,6 +1,6 @@
-# Policy Based Render Control
+# react-grant
 
-This library is still under development and may change it's api without warning. Use at your own risk.
+Library for conditional rendering based on access
 
 ### Installation
 
@@ -67,8 +67,9 @@ export default withCan(EditLink);
 
 
 ## Programmer error protection
-Wrap your entire application in the `GrantDefinitions` to define which actions are available.
-If a Grant is trying to grant access to
+Wrap your entire application in the `GrantDefinitions` to define which actions
+are available. If a `Grant` is trying to grant access to an undefined action or
+a `Can` is trying to consume an unknown action an error will be thrown.
 
 ```js
 import { GrantDefinitions } from 'react-grant';
