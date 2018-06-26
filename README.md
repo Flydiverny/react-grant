@@ -33,7 +33,7 @@ import { Grant } from 'react-grant';
 ```
 
 ### Can
-Check access with `Can?
+Check access with `Can`
 
 ```js
 import { Can } from 'react-grant';
