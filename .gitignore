@@ -1,5 +1,7 @@
 /node_modules
-/dist
+/umd
+/es
+/lib
 
 .DS_Store
 
