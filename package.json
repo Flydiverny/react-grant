@@ -26,18 +26,15 @@
     "lint": "eslint src",
     "test": "jest --silent",
     "test:watch": "jest --watch --silent",
-    "prepublish": "yarn run clean && yarn run lint && yarn run test && yarn run build",
+    "prepublishOnly": "yarn run clean && yarn run lint && yarn run test && yarn run build",
     "clean": "rimraf umd es lib"
   },
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "npm:enzyme-react-adapter-future",
     "hoist-non-react-statics": "^2.5.0"
   },
   "devDependencies": {
-
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
@@ -47,6 +44,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "cross-env": "^5.2.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "npm:enzyme-react-adapter-future",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",

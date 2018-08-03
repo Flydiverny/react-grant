@@ -4,14 +4,15 @@
     "jest/globals": true
   },
   "root": true,
-  "extends": [
-    "airbnb",
-    "plugin:jest/recommended",
-    "prettier"
-  ],
+  "extends": ["airbnb", "plugin:jest/recommended", "prettier"],
   "parser": "babel-eslint",
-  "plugins": [
-    "jest",
-    "prettier"
-  ]
+  "plugins": ["jest", "prettier"],
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/tests/*.js", "**/*.test.js", "**/*.test.jsx"]
+      }
+    ]
+  }
 }
