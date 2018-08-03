@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import { Grant, Can } from '../';
+import GrantContext from '../GrantContext';
 
 const A = () => 'A';
 
@@ -72,5 +73,20 @@ describe('<Can />', () => {
     );
 
     expect(wrapper.find(A).exists()).toEqual(false);
+  });
+
+  it('checks if actions are defined', () => {
+    const defined = jest.fn(() => false);
+
+    mount(
+      <GrantContext.Provider value={{ defined }}>
+        <Can do="show:a show:c">
+          <A />
+        </Can>
+      </GrantContext.Provider>
+    );
+
+    expect(defined).toHaveBeenCalledTimes(1);
+    expect(defined).toBeCalledWith('show:a show:c');
   });
 });
