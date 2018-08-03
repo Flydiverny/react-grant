@@ -5,10 +5,6 @@ import verifyAccess, { normalizeToArray } from './utils/verifyAccess';
 import actionsShape from './utils/actionsShape';
 
 const verifyDefined = defined => {
-  if (!defined) {
-    return () => true;
-  }
-
   const verifier = verifyAccess(defined);
 
   return actions =>
@@ -22,7 +18,7 @@ const verifyDefined = defined => {
 };
 
 const GrantDefinitions = ({ children, defined }) => (
-  <GrantContext.Provider value={{ defined: verifyDefined(defined) }}>
+  <GrantContext.Provider value={{ defined: verifyDefined(defined), canDo: () => false }}>
     {children}
   </GrantContext.Provider>
 );
@@ -33,7 +29,7 @@ GrantDefinitions.propTypes = {
 };
 
 GrantDefinitions.defaultProps = {
-  defined: null,
+  defined: [],
 };
 
 export default GrantDefinitions;
