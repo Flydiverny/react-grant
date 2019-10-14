@@ -1,6 +1,6 @@
 {
   "name": "react-grant",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "description": "Grant Based Access Control",
   "author": "Markus Maga <markus@nadilus.com>",
   "homepage": "https://github.com/flydiverny/react-grant",
@@ -11,77 +11,57 @@
     "type": "git",
     "url": "https://github.com/flydiverny/react-grant.git"
   },
-  "main": "umd/react-grant.js",
-  "module": "es/index.js",
-  "files": [
-    "umd",
-    "es",
-    "lib"
-  ],
-  "scripts": {
-    "build": "yarn run build:es && yarn build:commonjs && yarn run build:umd",
-    "build:es": "babel src -d es --ignore tests",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src -d lib --ignore tests",
-    "build:umd": "cross-env webpack --mode=production",
-    "lint": "eslint src",
-    "test": "jest --silent",
-    "test:watch": "jest --watch --silent",
-    "prepublishOnly": "yarn run clean && yarn run lint && yarn run test && yarn run build",
-    "clean": "rimraf umd es lib"
-  },
   "keywords": [],
   "license": "MIT",
-  "dependencies": {
-    "hoist-non-react-statics": "^2.5.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-3": "^6.24.1",
-    "cross-env": "^5.2.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "eslint": "^4.9.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^21.15.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^7.4.0",
-    "eslint-plugin-react-hooks": "^1.6.0",
-    "husky": "^0.14.3",
-    "jest": "^23.1.0",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.11.1",
-    "prop-types": "^15.6.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "webpack": "^4.3.0",
-    "webpack-cli": "^2.0.13"
+  "main": "dist/index.js",
+  "module": "dist/react-grant.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "lint": "tsdx lint",
+    "prepublish": "yarn run lint && yarn run test && yarn run build"
   },
   "peerDependencies": {
-    "prop-types": "^15.6",
-    "react": "^16.8",
-    "react-dom": "^16.8"
+    "react": ">=16"
   },
-  "lint-staged": {
-    "linters": {
-      "src/**/*.{js,jsx,json}": [
-        "eslint --fix",
-        "prettier --config .prettierrc --write",
-        "git add"
-      ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
     }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
   "jest": {
     "setupFiles": [
-      "./src/tests/enzyme.js"
+      "./test/enzyme.ts"
     ]
+  },
+  "devDependencies": {
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/jest": "^24.0.18",
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "eslint-config-react-app": "5.0.1",
+    "husky": "^3.0.9",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "tsdx": "^0.9.3",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "hoist-non-react-statics": "^3.3.0"
   }
 }

@@ -1,10 +1,14 @@
-import React from 'react';
+import * as React from 'react';
 import { mount } from 'enzyme';
 
-import { GrantDefinitions } from '../';
-import GrantContext from '../GrantContext';
+import { GrantDefinitions, GrantContext } from '../src';
 
 describe('<GrantDefinitions />', () => {
+  // Monkey patch to prevent jsdom logging like mad so we can catch in tests..
+  console.error = (msg: string) => {
+    throw new Error(msg);
+  };
+
   it('throws an error when checking for undefined grant, with definitions', () => {
     expect(() =>
       mount(
@@ -82,7 +86,9 @@ describe('<GrantDefinitions />', () => {
       mount(
         <GrantDefinitions defined={['show-something', 'show:my-alerts']}>
           <GrantContext.Consumer>
-            {({ defined }) => defined('show-something show:my-alerts some:undefined-action')}
+            {({ defined }) =>
+              defined('show-something show:my-alerts some:undefined-action')
+            }
           </GrantContext.Consumer>
         </GrantDefinitions>
       )
@@ -105,7 +111,9 @@ describe('<GrantDefinitions />', () => {
     expect(() =>
       mount(
         <GrantDefinitions defined={[]}>
-          <GrantContext.Consumer>{({ canDo }) => canDo('show:my-alerts')}</GrantContext.Consumer>
+          <GrantContext.Consumer>
+            {({ canDo }) => canDo('show:my-alerts')}
+          </GrantContext.Consumer>
         </GrantDefinitions>
       )
     ).not.toThrow();

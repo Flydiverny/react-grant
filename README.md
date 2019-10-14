@@ -17,6 +17,7 @@ yarn add react-grant
 ## Usage
 
 ### Grant
+
 Grant access to specific trees by using the `Grant`.
 
 ```js
@@ -33,6 +34,7 @@ import { Grant } from 'react-grant';
 ```
 
 ### Can
+
 Check access with `Can`
 
 ```js
@@ -57,7 +59,7 @@ const Article = ({}) => (
   <div>
     <span>Hello</span>
     <Can do="article:edit">
-      { can => can ? <Link>Edit</Link> : <span>Cant edit</span> }
+      {can => (can ? <Link>Edit</Link> : <span>Cant edit</span>)}
     </Can>
   </div>
 );
@@ -66,17 +68,17 @@ const Article = ({}) => (
 ## HoCs
 
 ### Can
+
 ```js
 import { canDo } from 'react-grant';
 
-const EditLink = ({}) => (
-  <Link>Edit</Link>
-);
+const EditLink = ({}) => <Link>Edit</Link>;
 
 export default canDo('edit:article', EditLink);
 ```
 
 ### Inject canDo
+
 ```js
 import { withCan } from 'react-grant';
 
@@ -89,8 +91,8 @@ const EditLink = ({ canDo }) => {
 export default withCan(EditLink);
 ```
 
-
 ## Programmer error protection
+
 Wrap your entire application in the `GrantDefinitions` to define which actions
 are available. If a `Grant` is trying to grant access to an undefined action or
 a `Can` is trying to consume an unknown action an error will be thrown.

@@ -1,23 +1,25 @@
-import React from 'react';
+import * as React from 'react';
 import { mount } from 'enzyme';
 
-import { Grant } from '../';
-import GrantContext from '../GrantContext';
+import { Grant, GrantContext } from '../src';
 
-const A = () => 'A';
+const A = () => <div>A</div>;
 
 describe('<Grant />', () => {
   it('provides access', () => {
     expect.assertions(3);
 
     mount(
-      <GrantContext.Provider value={{ canDo: () => false, defined: () => true }}>
+      <GrantContext.Provider
+        value={{ canDo: () => false, defined: () => true }}
+      >
         <Grant accessTo="show:a show:c">
           <GrantContext.Consumer>
             {({ canDo }) => {
               expect(canDo('show:a')).toEqual(true);
               expect(canDo('show:b')).toEqual(false);
               expect(canDo('show:c')).toEqual(true);
+              return <div></div>;
             }}
           </GrantContext.Consumer>
         </Grant>
@@ -29,7 +31,7 @@ describe('<Grant />', () => {
     const defined = jest.fn(() => false);
 
     mount(
-      <GrantContext.Provider value={{ defined }}>
+      <GrantContext.Provider value={{ defined, canDo: () => false }}>
         <Grant accessTo="show:a show:c">
           <A />
         </Grant>
@@ -55,6 +57,7 @@ describe('<Grant />', () => {
                 expect(canDo('show:c')).toEqual(true);
                 expect(canDo('show:b')).toEqual(false);
                 expect(canDo('show:d')).toEqual(true);
+                return <div></div>;
               }}
             </GrantContext.Consumer>
           </Grant>
@@ -70,11 +73,14 @@ describe('<Grant />', () => {
     expect.assertions(2);
 
     mount(
-      <GrantContext.Provider value={{ canDo: () => false, defined: () => true }}>
+      <GrantContext.Provider
+        value={{ canDo: () => false, defined: () => true }}
+      >
         <Grant accessTo="show:a show:c">
           <GrantContext.Consumer>
             {({ canDo }) => {
               expect(canDo('show:d')).toEqual(false);
+              return <div></div>;
             }}
           </GrantContext.Consumer>
 
@@ -82,6 +88,7 @@ describe('<Grant />', () => {
             <GrantContext.Consumer>
               {({ canDo }) => {
                 expect(canDo('show:d')).toEqual(true);
+                return <div></div>;
               }}
             </GrantContext.Consumer>
           </Grant>
@@ -94,13 +101,16 @@ describe('<Grant />', () => {
     expect.assertions(6);
 
     mount(
-      <GrantContext.Provider value={{ canDo: () => false, defined: () => true }}>
+      <GrantContext.Provider
+        value={{ canDo: () => false, defined: () => true }}
+      >
         <Grant accessTo="show:a show:c">
           <GrantContext.Consumer>
             {({ canDo }) => {
               expect(canDo('show:a')).toEqual(true);
               expect(canDo('show:b')).toEqual(false);
               expect(canDo('show:c')).toEqual(true);
+              return <div></div>;
             }}
           </GrantContext.Consumer>
         </Grant>
@@ -111,6 +121,7 @@ describe('<Grant />', () => {
               expect(canDo('show:a')).toEqual(false);
               expect(canDo('show:b')).toEqual(true);
               expect(canDo('show:c')).toEqual(false);
+              return <div></div>;
             }}
           </GrantContext.Consumer>
         </Grant>

@@ -1,18 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import GrantContext from './GrantContext';
 import verifyAccess, { normalizeToArray } from './utils/verifyAccess';
-import actionsShape from './utils/actionsShape';
+import { Actions, Verifier } from 'types';
 
-const extendCanDo = (canDo, isDefined, grantedAccess) => {
+const extendCanDo = (
+  canDo: Verifier,
+  isDefined: Verifier,
+  grantedAccess: Actions
+) => {
   // Verify that all things granted exist
   isDefined(grantedAccess);
   const verifier = verifyAccess(grantedAccess);
 
-  return actions => normalizeToArray(actions).every(action => verifier(action) || canDo(action));
+  return (actions: Actions) =>
+    normalizeToArray(actions).every(
+      action => verifier(action) || canDo(action)
+    );
 };
 
-const Grant = ({ children, accessTo }) => (
+type Props = {
+  accessTo: Actions;
+};
+
+const Grant: React.FunctionComponent<Props> = ({ children, accessTo }) => (
   <GrantContext.Consumer>
     {({ canDo, defined, ...rest }) => (
       <GrantContext.Provider
@@ -27,10 +37,5 @@ const Grant = ({ children, accessTo }) => (
     )}
   </GrantContext.Consumer>
 );
-
-Grant.propTypes = {
-  children: PropTypes.node.isRequired,
-  accessTo: actionsShape.isRequired,
-};
 
 export default Grant;

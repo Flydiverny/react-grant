@@ -1,8 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import GrantContext from './GrantContext';
+import { Actions } from 'types';
 
-const Can = ({ do: actions, children }) => (
+type RenderProp = (hasAccess: boolean) => JSX.Element;
+
+type Props = {
+  do: Actions;
+  children: React.ReactNode | RenderProp;
+};
+
+const Can = ({ do: actions, children }: Props) => (
   <GrantContext.Consumer>
     {({ canDo, defined }) => {
       const hasAccess = defined(actions) && canDo(actions);
@@ -13,10 +20,5 @@ const Can = ({ do: actions, children }) => (
     }}
   </GrantContext.Consumer>
 );
-
-Can.propTypes = {
-  do: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
-};
 
 export default Can;

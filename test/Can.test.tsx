@@ -1,10 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { mount } from 'enzyme';
 
-import { Grant, Can } from '../';
-import GrantContext from '../GrantContext';
+import { Grant, Can, GrantContext } from '../src';
 
-const A = () => 'A';
+const A = () => <div>A</div>;
 
 describe('<Can />', () => {
   it('does not render child if access not available', () => {
@@ -79,7 +78,7 @@ describe('<Can />', () => {
     const defined = jest.fn(() => false);
 
     mount(
-      <GrantContext.Provider value={{ defined }}>
+      <GrantContext.Provider value={{ defined, canDo: () => false }}>
         <Can do="show:a show:c">
           <A />
         </Can>

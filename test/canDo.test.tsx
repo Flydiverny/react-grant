@@ -1,13 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import { mount } from 'enzyme';
-import { test } from '../canDo';
-import { Grant } from '../';
+import { test } from '../src/canDo';
+import { Grant } from '../src';
 
-const A = () => 'A';
+const A = () => <div>A</div>;
 const AWithCanDo = test.canDo('show:a')(A);
 const AWithMultiCanDo = test.canDo('show:a show:b')(A);
 
-describe("canDo", () => {
+describe('canDo', () => {
   it('does not render child if access not available', () => {
     const wrapper = mount(
       <Grant accessTo="show:b">
