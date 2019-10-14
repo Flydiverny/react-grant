@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Actions } from 'types';
+import { Actions } from './types';
 
 export type GrantContextProvidedValues = {
   canDo: (actions: Actions) => boolean;

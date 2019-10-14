@@ -1,6 +1,6 @@
 import * as React from 'react';
 import GrantContext from './GrantContext';
-import { Actions } from 'types';
+import { Actions } from './types';
 
 type RenderProp = (hasAccess: boolean) => JSX.Element;
 

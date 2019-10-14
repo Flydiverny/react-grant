@@ -1,6 +1,6 @@
 import * as React from 'react';
 import GrantContext from './GrantContext';
-import verifyAccess, { normalizeToArray } from './utils/verifyAccess';
+import verifyAccess, { normalizeToArray } from './verifyAccess';
 import { Actions } from './types';
 
 const verifyDefined = (defined: Actions) => {

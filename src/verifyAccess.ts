@@ -1,4 +1,4 @@
-import { Actions, Action } from 'types';
+import { Actions, Action } from './types';
 
 export const normalizeToArray = (arrayOrStr: Actions) =>
   !Array.isArray(arrayOrStr) ? arrayOrStr.split(' ') : arrayOrStr;

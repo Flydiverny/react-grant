@@ -1,7 +1,7 @@
 import * as React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import Can from './Can';
-import { Actions } from 'types';
+import { Actions } from './types';
 
 const canDo = (actions: Actions) => (WrappedComponent: any) => {
   const CanDo = ({ forwardedRef, ...props }: any) => (

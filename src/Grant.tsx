@@ -1,7 +1,7 @@
 import * as React from 'react';
 import GrantContext from './GrantContext';
-import verifyAccess, { normalizeToArray } from './utils/verifyAccess';
-import { Actions, Verifier } from 'types';
+import verifyAccess, { normalizeToArray } from './verifyAccess';
+import { Actions, Verifier } from './types';
 
 const extendCanDo = (
   canDo: Verifier,

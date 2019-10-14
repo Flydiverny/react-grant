@@ -1,7 +1,7 @@
 import * as React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import GrantContext from './GrantContext';
-import { Actions } from 'types';
+import { Actions } from './types';
 
 const withCan = (WrappedComponent: any) => {
   const WithCan = ({ forwardedRef, ...props }: any) => (
