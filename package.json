@@ -24,7 +24,7 @@
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint",
-    "prepublish": "yarn run lint && yarn run test && yarn run build"
+    "prepublishOnly": "yarn run lint && yarn run test && yarn run build"
   },
   "peerDependencies": {
     "react": ">=16"
